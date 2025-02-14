@@ -1,11 +1,12 @@
-import { GamblingCommand } from './commands/gambling';
 import { Client, REST, Routes, Events } from "discord.js";
 import { CommandType, CommandHandlerType } from "./types/commands";
-import { UserCommand } from './commands/user';
 import { PrismaClient } from '@prisma/client';
+import { SuperChatCommand } from "./commands/superchat";
+import { ProfileCommand } from "./commands/profile";
 
-const commands: CommandType[] = [ ...GamblingCommand, ...UserCommand ];
+const commands: CommandType[] = [ ...SuperChatCommand, ...ProfileCommand ];
 
+// 以下気にしなくていいところ
 
 function economyHandlers(commands: CommandType[]): { [key: string]: CommandHandlerType } {
   return commands.reduce((handlers, command) => {
@@ -28,12 +29,18 @@ async function registerCommands(client: Client, rest: REST) {
 function EconomyCommand(prisma: PrismaClient, client: Client) {
   const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN ?? "");
   const commandHandlers = economyHandlers(commands);
+  const apiUrl = process.env.API_URL;
+  const basicInfo = { version: process.env.npm_package_version ?? "0.0.1" };
+  if (!apiUrl) {
+    console.error('API_URL is not defined.');
+    return;
+  }
 
   if (process.env.DISCORD_BOT_TOKEN) {
     registerCommands(client, rest).then(() => {
       client.on(Events.InteractionCreate, async (interaction) => {
         if (interaction.isChatInputCommand()) {
-          return commandHandlers[interaction.commandName](prisma, interaction);
+          return commandHandlers[interaction.commandName](prisma, interaction, apiUrl, basicInfo);
         }
       });
     });

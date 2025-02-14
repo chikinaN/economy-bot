@@ -16,3 +16,6 @@ mongo_db/
 .clj-kondo/
 .lsp/
 .history/
+
+prisma/*
+!prisma/schema.prisma
