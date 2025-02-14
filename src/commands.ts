@@ -1,7 +1,7 @@
 import { Client, REST, Routes, Events } from "discord.js";
 import { CommandType, CommandHandlerType } from "./types/commands";
 import { PrismaClient } from '@prisma/client';
-import { SuperChatCommand } from "./commands/superchat";
+import { SuperChatCommand } from "./commands/link";
 import { ProfileCommand } from "./commands/profile";
 
 const commands: CommandType[] = [ ...SuperChatCommand, ...ProfileCommand ];
