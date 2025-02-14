@@ -1,0 +1,18 @@
+node_modules/
+.env
+config.json
+build/
+
+.DS_Store
+*/.DS_Store
+
+public/img/*
+public/movie/*
+
+mongo_db/
+
+# VScode extensions settings
+
+.clj-kondo/
+.lsp/
+.history/
