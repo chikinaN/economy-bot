@@ -8,6 +8,12 @@
 npm i
 ```
 
+prisma起動
+
+```zsh
+npx prisma generate
+```
+
 DB作成
 
 ```zsh
