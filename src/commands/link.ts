@@ -3,7 +3,7 @@ import { CommandType } from "../types/commands";
 
 type APIAuthcode = { token: string };
 
-export const SuperChatCommand: CommandType[] = [
+export const LinkCommand: CommandType[] = [
 	{
 		name: "link",
 		builder: new SlashCommandBuilder()
