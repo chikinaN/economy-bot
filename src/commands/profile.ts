@@ -39,9 +39,12 @@ export const ProfileCommand: CommandType[] = [
 			const member = await interaction.guild?.members.fetch(interaction.user.id);
 			const displayName = member?.displayName?? interaction.user.username;
 
+			console.log(displayName);
+			console.log(data);
+
 			const embed = new EmbedBuilder()
 				.setTitle('残高')
-				.setDescription(`${displayName}の残高は、${data.balance.toLocaleString()}ゴリラコインです。`)
+				.setDescription(`${displayName}の残高は、${data.balance.toLocaleString()}ちきなコインです。`)
 				.setColor('#009990');
 			return await interaction.reply({ embeds: [embed] });
 		}

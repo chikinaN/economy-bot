@@ -4,8 +4,11 @@ import { PrismaClient } from '@prisma/client';
 import { LinkCommand } from "./commands/link";
 import { ProfileCommand } from "./commands/profile";
 import { SuperchatCommand } from "./commands/superchat";
+import { RankingCommand } from "./commands/ranking"; 
+import { ChickenCommand } from "./commands/chicken";
+import { CheckinCommand } from "./commands/checkin";
 
-const commands: CommandType[] = [ ...LinkCommand, ...ProfileCommand, ...SuperchatCommand ];
+const commands: CommandType[] = [ ...LinkCommand, ...ProfileCommand, ...SuperchatCommand, ...RankingCommand, ...ChickenCommand, ...CheckinCommand ]; 
 
 // 以下気にしなくていいところ
 
