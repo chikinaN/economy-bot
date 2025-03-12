@@ -25,7 +25,6 @@ export const CheckinCommand: CommandType[] = [
           'Authorization': account.token
         }
       });
-      //console.log(await response.text());
       const data = await response.json() as APIAuthcode;
 
       if (!response.ok || !data) {
@@ -46,15 +45,15 @@ export const CheckinCommand: CommandType[] = [
         console.log(`変更後のトークン: ${data.token}`)
 
         const embed = new EmbedBuilder()
-          .setTitle('トークン更新成功')
-          .setDescription('トークンの更新に成功しました')
+          .setTitle('チェックイン更新成功')
+          .setDescription('ログインボーナスを付与しました。')
           .setFooter({ text: `BOT ver${basicInfo.version}` })
           .setColor('#00ff00');
         return await interaction.reply({ embeds: [embed] });
       } else {
         const embed = new EmbedBuilder()
           .setTitle('チェックイン済みです')
-          .setDescription(`チェックインは一日一回まで可能です。`)
+          .setDescription(`ログインボーナスは付与済みです。`)
           .setFooter({ text: `BOT ver${basicInfo.version}` })
           .setColor('#ff0000');
         return await interaction.reply({ embeds: [embed] });
