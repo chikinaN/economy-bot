@@ -56,7 +56,7 @@ export const CheckinCommand: CommandType[] = [
           .setDescription(`ログインボーナスは付与済みです。`)
           .setFooter({ text: `BOT ver${basicInfo.version}` })
           .setColor('#ff0000');
-        return await interaction.reply({ embeds: [embed] });
+        return await interaction.reply({ embeds: [embed], ephemeral: true });
       }
   }
   }
