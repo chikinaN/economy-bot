@@ -38,7 +38,7 @@ export const LinkCommand: CommandType[] = [
           .setDescription(`エラー: 通信に失敗しました`)
           .setFooter({ text: `BOT ver${basicInfo.version}` })
           .setColor('#ff0000');
-        return await interaction.reply({ embeds: [embed] });
+        return await interaction.reply({ embeds: [embed], ephemeral: true });
 			}
 
 			console.log(data.token);
@@ -57,7 +57,7 @@ export const LinkCommand: CommandType[] = [
           .setFooter({ text: `BOT ver${basicInfo.version}` })
           .setColor('#00ff00');
 
-      return await interaction.reply({ embeds: [embed] });
+      return await interaction.reply({ embeds: [embed], ephemeral: true });
 		}
 	}
 ]
